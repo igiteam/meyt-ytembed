@@ -1,0 +1,14 @@
+<!-- // ========================================================================
+// CRITICAL: HOW TO SAFELY GENERATE HTML WITH
+<SCRIPT> TAGS FROM JAVASCRIPT
+    // ========================================================================
+    // When generating HTML that contains <script> tags FROM within JavaScript,
+    // the '</script>' tag will CLOSE our current JavaScript block prematurely.
+//
+// SOLUTION: Break up the word "script" in the HTML output:
+// WRONG: '</script>' ← This closes current script!
+// RIGHT: '</scr' + 'ipt>' ← This avoids premature closing // // Also need proper escaping for different contexts:
+    // 1. JavaScript strings: escape ' as \' and " as \" // 2. HTML attributes: escape " as &quot; and ' as &#39;
+        // 3. HTML text content: escape <, >, &, " , ' as HTML entities
+        // ========================================================================
+            -->

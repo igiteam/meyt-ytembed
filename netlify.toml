@@ -1,0 +1,30 @@
+plugins = []
+headers = []
+redirects = []
+
+[[edge_functions]]
+path = "/*"
+function = "dynamic-meta"
+
+[functions]
+
+  [functions."*"]
+
+[build]
+publish = "/Users/gabrielmajorsky/Documents/__________win10dev.xyz/igiteam.github.com/appgenesys_web_apps_by_gabz/ytembedxyz.netlify.app"
+publishOrigin = "default"
+base = "/Users/gabrielmajorsky/Documents/__________win10dev.xyz/igiteam.github.com/appgenesys_web_apps_by_gabz/ytembedxyz.netlify.app"
+
+  [build.environment]
+
+  [build.processing]
+
+    [build.processing.css]
+
+    [build.processing.html]
+
+    [build.processing.images]
+
+    [build.processing.js]
+
+  [build.services]
