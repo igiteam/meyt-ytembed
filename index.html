@@ -928,6 +928,12 @@
                     <i class="fas fa-copy"></i> Copy
                 </button>
             </div>
+            <div class="share-url-container" style="margin-top: 10px;">
+                <input type="text" class="share-url-input" id="originalUrlInput" readonly placeholder="Original YouTube link">
+                <button class="copy-button" id="copyOriginalButton">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
             <div class="share-actions">
                 <button class="close-button" id="closeShareButton">
                     <i class="fas fa-times"></i> Close
@@ -1762,10 +1768,11 @@
             const shareUrl = generateShareableUrl(currentVideoId);
             if (shareUrl) {
                 shareUrlInput.value = shareUrl;
+                document.getElementById('originalUrlInput').value = `https://youtu.be/${currentVideoId}`;
                 shareOverlay.classList.add('active');
             }
         }
-
+        
         function hideShareDialog() {
             shareOverlay.classList.remove('active');
         }
@@ -1917,6 +1924,26 @@
             if (e.target === shareOverlay) hideShareDialog();
         });
 
+        document.getElementById('copyOriginalButton').addEventListener('click', () => {
+            const input = document.getElementById('originalUrlInput');
+            input.select();
+            input.setSelectionRange(0, 99999);
+            try {
+                navigator.clipboard.writeText(input.value).then(() => {
+                    const btn = document.getElementById('copyOriginalButton');
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    btn.style.backgroundColor = '#28a745';
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.style.backgroundColor = '';
+                    }, 2000);
+                });
+            } catch (err) {
+                document.execCommand('copy');
+            }
+        });
+        
         window.addEventListener('resize', () => {
             if (isMobileDevice()) {
                 createPrecisionNotches();
